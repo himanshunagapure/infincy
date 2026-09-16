@@ -1,0 +1,106 @@
+Build a marketing website for Infincy, a small software engineering studio (currently a solo founder) that builds full-stack web applications, backend systems, cloud infrastructure, and AI/agentic features for businesses. Position it as an engineering studio that also does advanced AI work — NOT as an "AI startup." Avoid every visual cliché of AI-company websites: no gradient orbs, no purple-to-blue gradients, no glowing blobs, no robot/brain/neural-network illustrations, no generic "Empowering the future of intelligent solutions" copy. This should feel like a confident, crafted, human studio site — closer to a boutique design/dev studio than a SaaS dashboard.
+
+Tech & structure
+React + Tailwind CSS, fully responsive, clean semantic structure.
+5 pages/routes: Home, About, Services, Work, Contact. Single consistent nav across all pages, single consistent footer with contact info and social/GitHub/LinkedIn links (use placeholder links I'll swap later).
+One repeated call-to-action phrase throughout the site: "Start a project" — button in the nav, in the hero, and at the bottom of every page, linking to the Contact page.
+Smooth, purposeful micro-interactions only: hover states on buttons/cards, a subtle fade/slide-in as sections enter the viewport on scroll, headline weight/size shifting slightly on scroll if feasible. Keep all animations fast and subtle (under ~300ms) — not flashy, not distracting.
+Layout should feel slightly asymmetric and intentional — avoid the default centered-hero + 3-icon-cards template look. Vary section layouts (e.g. alternate left/right image-text splits, an uneven grid for case studies) rather than repeating one block pattern down the page.
+Design system
+
+Colors (use as CSS variables / Tailwind theme colors, not one-off hex values scattered in components):
+
+Background (light, primary): 
+#F6F3EC (warm off-white / paper)
+Ink / text: 
+#1C1712 (near-black, warm undertone)
+Primary accent: 
+#D9631F (burnt amber) — use ONLY for CTAs, links, key numbers/highlights, and small accent details. Never as a large background wash.
+Secondary accent (very sparing): 
+#4B5320 (deep olive) — for tags, small labels, or secondary UI details only.
+Optional dark section/footer background: 
+#15120E (espresso black) with 
+#F6F3EC text, if you want one dark band on the page for contrast (e.g. behind the footer or a "final CTA" section).
+
+Typography:
+
+Headline/display font: Fraunces (Google Font, use bold/expressive weights, this is the personality of the site — headlines should be large and confident, sometimes oversized as a visual element in themselves).
+Body font: Inter or General Sans (clean, quiet, readable — body text should not compete with headlines).
+Strong type hierarchy: hero headline should be very large (think 56–80px desktop), section headers clearly smaller but still bold, body text comfortable and readable.
+
+Imagery: No stock illustrations, no AI-generated abstract art, no robot/brain graphics. Use simple placeholder blocks/frames labeled clearly (e.g. "[screenshot of project here]") where real screenshots or photos will go later — I'll replace these myself.
+
+Page-by-page content
+Home
+Hero headline (large, Fraunces): "We build the backend, the full product, and the AI layer — when you need it."
+Hero subhead (smaller, Inter): "Infincy is a software engineering studio. Full-stack apps, backend systems, cloud infrastructure, and production-grade AI features — built end to end."
+Primary CTA button: "Start a project"
+A short proof/stat strip below the hero with 2–3 placeholder stats in large numbers, e.g.: "Compliance reports generated in under 60 seconds" / "Recall improved from 15% to 41% after fine-tuning" / "One founder, full-stack delivery." (Style these as bold large numbers/short phrases, not paragraphs.)
+A "What we do" section with 4 service categories as cards (see Services content below), each linking to the Services page.
+A "Selected work" section previewing 2–3 case studies (title + one-line description + "View case study" link), linking to the Work page.
+Closing CTA band (can use the dark espresso background here): headline like "Have a project in mind?" + "Start a project" button.
+About
+Headline: "Engineering, then AI — not the other way around."
+Body copy (first person, write in a real founder voice, not corporate): a short narrative — computer science background, experience across data/analytics roles, then building production multi-agent AI systems (LangGraph orchestration, RAG pipelines) at a GenAI engineering role, and now building Infincy to do that same caliber of work directly for clients, across both classic full-stack/backend projects and AI-specific ones.
+A short "how I work" or "what I believe" block — 2–3 short principles, e.g.: "Ship the whole thing, not just a demo." / "AI should solve a real problem, not be the headline." / "Direct communication, no account managers in between."
+Placeholder for a real photo (labeled "[founder photo]").
+Services
+
+List these as the core offerings, each with a short description (write 1–2 sentences per service, plain and specific, not buzzword-heavy):
+
+Full-Stack Web & App Development — end-to-end product builds, from MVP to production.
+Backend & API Engineering — REST APIs, microservices, database design, system architecture.
+Cloud & DevOps — AWS deployment, containerization, CI/CD setup.
+AI & Agentic Systems — LLM integration, RAG pipelines, multi-agent orchestration, workflow automation agents.
+Data & Automation — data pipelines, scraping, dashboards, process automation.
+Technical Advisory — architecture reviews and feasibility consulting.
+
+Below the list, add a simple 3-tier packages section (cards side by side):
+
+Launch — "MVP / landing product" — scoped full-stack build, fixed price, 2–4 weeks.
+Build — "Full product" — end-to-end app, backend, and cloud deployment, milestone-based.
+Scale / Retainer — "Ongoing partner" — monthly retainer for features, AI additions, and maintenance. (Use "Starting at ₹—" or "Get a quote" as placeholder pricing text, not real numbers.)
+Work
+
+Create 3 case study entries, each as a card/section with Problem → Approach → Outcome structure. Use these real projects (write the actual copy, don't just leave placeholders):
+
+Orkestrix — AI-powered screen & workflow builder
+Problem: turning natural-language prompts into fully functional application workflows was slow and required manual full-stack development for every screen.
+Approach: built a multi-agent architecture (LangGraph) that generates synchronized frontend screens and backend APIs from a single prompt, with reusable screens and tool integrations.
+Outcome: a working workflow builder that lets users assemble complete application pipelines by connecting AI-generated screens and tools.
+Regulatory RAG pipeline for compliance reporting
+Problem: analyzing banking regulations and producing compliance reports manually was slow and inconsistent.
+Approach: designed and deployed a production RAG pipeline using vector search (Pinecone), embeddings, and LLMs to retrieve relevant regulatory context automatically.
+Outcome: compliance reports generated in under 60 seconds, with consistent, retrievable source context.
+Sanskrit–English semantic search fine-tuning
+Problem: an off-the-shelf multilingual embedding model performed poorly on Sanskrit-English retrieval.
+Approach: fine-tuned a multilingual embedding model end-to-end (an 8-stage pipeline covering preprocessing, transliteration, indexing, and training) on a dedicated retrieval dataset.
+Outcome: Recall@10 improved from 15% (zero-shot) to 41.3% after fine-tuning.
+
+Each case study card should have a "[project screenshot]" placeholder image slot at the top.
+
+Contact
+Headline: "Start a project."
+Short line: "Tell me a bit about what you're building — I'll get back to you within a day or two."
+A simple form: Name, Email, Project type (dropdown: Full-Stack App / Backend & API / AI & Agentic Systems / Not sure yet), Budget range (dropdown with rough bands), Message (textarea), Submit button.
+Below the form: a direct email address placeholder and space for a calendar-booking link placeholder.
+Explicit "do not" list
+Do not use a purple/blue gradient anywhere.
+Do not use a glowing orb, blob, or particle-effect hero background.
+Do not use robot, brain, or circuit-board illustrations.
+Do not use Inter (or any single font) for both headlines and body text — headlines must use Fraunces.
+Do not center every section in a generic hero+3-cards pattern — vary the layouts as described above.
+Do not invent fake client logos or fake testimonials — leave a testimonials section out entirely for now rather than fabricating quotes.
+
+Optional palette swap — if you'd rather try a different color direction than Ink & Amber, add one of these lines to the prompt above before the "Page-by-page content" section:
+
+Moodier/editorial version: "Use this palette instead: background 
+#F2EEE6, ink 
+#201A18, primary accent 
+#6B2036 (deep plum/wine), secondary accent 
+#B5673D (dusty terracotta). Pair with a serif display font for an editorial studio feel."
+Dark-mode-native version: "Use this palette instead: background 
+#15181B (graphite), text 
+#EDEAE3 (warm white), primary accent 
+#C4F542 (lime, used sparingly), secondary accent 
+#C4642F (rust)."
