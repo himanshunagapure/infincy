@@ -401,11 +401,41 @@ function Work() {
 
 function Contact() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [form, setForm] = useState({ name: '', email: '', type: '', budget: '', message: '' });
   const update = (field: keyof typeof form, value: string) => setForm((current) => ({ ...current, [field]: value }));
-  const submit = (event: FormEvent<HTMLFormElement>) => {
+  const submit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setSubmitted(true);
+    if (submitting) return;
+
+    setSubmitting(true);
+    setError(null);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+
+      if (!response.ok) {
+        const payload = (await response.json().catch(() => null)) as { error?: string } | null;
+        throw new Error(payload?.error || 'Something went wrong. Please try again.');
+      }
+
+      setSubmitted(true);
+    } catch (submitError) {
+      const message =
+        submitError instanceof Error ? submitError.message : 'Something went wrong. Please try again.';
+      setError(
+        message === 'Failed to fetch'
+          ? 'Could not reach the server. Please try again in a moment.'
+          : message,
+      );
+    } finally {
+      setSubmitting(false);
+    }
   };
   return (
     <>
@@ -425,8 +455,16 @@ function Contact() {
               <div className="field"><label htmlFor="budget">Budget range</label><div className="select-wrap"><select id="budget" value={form.budget} onChange={(event) => update('budget', event.target.value)} required data-testid="select-budget"><option value="" disabled>Select a rough band</option><option>Under ₹5L</option><option>₹5L–₹15L</option><option>₹15L–₹30L</option><option>₹30L+</option><option>Not sure yet</option></select><ChevronDown size={17} /></div></div>
               <div className="field"><label htmlFor="message">Message</label><textarea id="message" value={form.message} onChange={(event) => update('message', event.target.value)} placeholder="What are you building, and where are you in the process?" required data-testid="textarea-message" /></div>
               <div className="form-bottom">
-                {submitted ? <span className="form-note" data-testid="status-form-submitted">Thanks - your note is ready for a reply. I’ll be in touch within a day or two.</span> : <span className="form-note">No sales sequence. Just a thoughtful reply from the person who would do the work.</span>}
-                <button type="submit" className="button" data-testid="button-submit-inquiry">Start a project <ArrowUpRight size={16} /></button>
+                {submitted ? (
+                  <span className="form-note" data-testid="status-form-submitted">Thanks - your note is ready for a reply. I’ll be in touch within a day or two.</span>
+                ) : error ? (
+                  <span className="form-note" data-testid="status-form-error">{error}</span>
+                ) : (
+                  <span className="form-note">No sales sequence. Just a thoughtful reply from the person who would do the work.</span>
+                )}
+                <button type="submit" className="button" disabled={submitting || submitted} data-testid="button-submit-inquiry">
+                  {submitting ? 'Sending…' : 'Start a project'} <ArrowUpRight size={16} />
+                </button>
               </div>
             </form>
             <div className="contact-details">
