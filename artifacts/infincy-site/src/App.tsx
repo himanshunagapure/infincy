@@ -1,6 +1,6 @@
 import { type FormEvent, type ReactNode, useEffect, useState } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { Calendar, ChevronDown, Github, Linkedin, Mail, Menu, ArrowUpRight, X } from 'lucide-react';
+import { ChevronDown, Github, Linkedin, Mail, Menu, ArrowUpRight, X } from 'lucide-react';
 import { Link, Route, Router as WouterRouter, Switch, useLocation } from 'wouter';
 import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
@@ -163,7 +163,7 @@ function Footer() {
             <a className="footer-link" href="https://github.com/himanshunagapure" target="_blank" rel="noreferrer" data-testid="link-footer-github">
               <Github size={13} /> GitHub
             </a>
-            <a className="footer-link" href="https://www.linkedin.com/in/hnagapure/m" target="_blank" rel="noreferrer" data-testid="link-footer-linkedin">
+            <a className="footer-link" href="https://www.linkedin.com/in/hnagapure" target="_blank" rel="noreferrer" data-testid="link-footer-linkedin">
               <Linkedin size={13} /> LinkedIn
             </a>
             <a className="footer-link" href="mailto:himanshunagapure.official@gmail.com" data-testid="link-footer-email">
@@ -173,7 +173,11 @@ function Footer() {
         </div>
         <div className="footer-bottom">
           <span>© {new Date().getFullYear()} Infincy. Built end to end.</span>
-          <span>Independent software engineering studio.</span>
+          <span className="footer-bottom-links">
+            <Link href="/privacy" className="footer-bottom-link" data-testid="link-footer-privacy">Privacy Policy</Link>
+            <span aria-hidden="true">·</span>
+            <span>Independent software engineering studio.</span>
+          </span>
         </div>
       </div>
     </footer>
@@ -359,7 +363,7 @@ function Services() {
           <div className="package-grid">
             <div className="package"><div><h3>Launch</h3><div className="package-kicker">MVP / landing product</div><p>Scoped full-stack build, fixed price, 2–4 weeks.</p></div><div className="package-price">Get a quote</div></div>
             <div className="package"><div><h3>Build</h3><div className="package-kicker">Full product</div><p>End-to-end app, backend, and cloud deployment, milestone-based.</p></div><div className="package-price">Get a quote</div></div>
-            <div className="package"><div><h3>Scale / Retainer</h3><div className="package-kicker">Ongoing partner</div><p>Monthly retainer for features, AI additions, and maintenance.</p></div><div className="package-price">Starting at ₹—</div></div>
+            <div className="package"><div><h3>Scale / Retainer</h3><div className="package-kicker">Ongoing partner</div><p>Monthly retainer for features, AI additions, and maintenance.</p></div><div className="package-price">Get a quote</div></div>
           </div>
         </div>
       </section>
@@ -469,9 +473,145 @@ function Contact() {
             </form>
             <div className="contact-details">
               <div><h3>Prefer a direct note?</h3><a href="mailto:himanshunagapure.official@gmail.com" data-testid="link-contact-email">himanshunagapure.official@gmail.com</a></div>
-              <div><h3>Book a first conversation</h3><a href="https://cal.com" target="_blank" rel="noreferrer" data-testid="link-contact-calendar"><Calendar size={14} /> Calendar link placeholder <ArrowUpRight size={13} /></a></div>
             </div>
           </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+function Privacy() {
+  return (
+    <>
+      <PageIntro eyebrow="Legal" title="Privacy Policy.">
+        How Infincy handles information on this website, including advertising and the contact form.
+      </PageIntro>
+      <section className="legal-section">
+        <div className="page-wrap legal-content" data-testid="content-privacy-policy">
+          <p className="legal-updated">Last updated: September 18, 2026</p>
+
+          <h2>Who we are</h2>
+          <p>
+            This website is operated by Infincy (“Infincy”, “we”, “us”, or “our”), an independent software
+            engineering studio. This Privacy Policy explains what information we collect, how we use it, and
+            the choices available to you when you visit{' '}
+            <a href="https://infincy.com">infincy.com</a> or related pages on this domain.
+          </p>
+          <p>
+            Questions about this policy: {' '}
+            <a href="mailto:himanshunagapure.official@gmail.com">himanshunagapure.official@gmail.com</a>.
+          </p>
+
+          <h2>Information we collect</h2>
+          <h3>Information you provide</h3>
+          <p>
+            If you use the contact form, we collect the details you submit, which may include your name,
+            email address, project type, budget range, and message. We use that information only to respond
+            to your inquiry and related project conversations.
+          </p>
+          <h3>Information collected automatically</h3>
+          <p>
+            Like most websites, our hosting provider and advertising partners may automatically receive
+            standard technical information such as IP address, browser type, device information, pages
+            visited, and approximate location derived from your IP address.
+          </p>
+
+          <h2>How we use information</h2>
+          <p>We use information to:</p>
+          <ul>
+            <li>Respond to project inquiries and communicate with you</li>
+            <li>Operate, maintain, and improve the website</li>
+            <li>Measure traffic and understand how the site is used</li>
+            <li>Show advertising, including through Google AdSense where enabled</li>
+            <li>Protect the site against abuse and comply with legal obligations</li>
+          </ul>
+
+          <h2>Advertising and cookies (Google AdSense)</h2>
+          <p>
+            This website may use Google AdSense and related Google advertising services to display ads.
+            Third-party vendors, including Google, use cookies and similar technologies to serve ads based
+            on a user’s prior visits to this website or other websites.
+          </p>
+          <p>
+            Google’s use of advertising cookies enables it and its partners to serve ads to users based on
+            their visit to this site and/or other sites on the Internet. Users may opt out of personalized
+            advertising by visiting{' '}
+            <a href="https://www.google.com/settings/ads" target="_blank" rel="noreferrer">
+              Google Ads Settings
+            </a>
+            . Alternatively, you can opt out of some third-party vendors’ use of cookies for personalized
+            advertising by visiting{' '}
+            <a href="https://www.aboutads.info/choices/" target="_blank" rel="noreferrer">
+              www.aboutads.info
+            </a>
+            .
+          </p>
+          <p>
+            For more detail on how Google uses information from sites that use its services, see{' '}
+            <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noreferrer">
+              How Google uses information from sites or apps that use our services
+            </a>
+            .
+          </p>
+          <p>
+            Cookies may also be used for essential site operation (for example, remembering preferences) and
+            analytics. You can control cookies through your browser settings; blocking some cookies may
+            affect site or ad functionality.
+          </p>
+
+          <h2>Sharing of information</h2>
+          <p>
+            We do not sell your personal information. We may share information with service providers that
+            help us run the site—for example email delivery for contact form submissions, website hosting,
+            and advertising partners such as Google. Those providers process information only as needed to
+            provide their services.
+          </p>
+          <p>
+            We may also disclose information if required by law, or to protect the rights, safety, and
+            integrity of Infincy, our users, or others.
+          </p>
+
+          <h2>Data retention</h2>
+          <p>
+            Contact form messages are retained as long as needed to respond to your inquiry and keep a
+            reasonable business record of client conversations, unless a longer period is required by law.
+            Advertising and analytics data may be retained according to the policies of those providers.
+          </p>
+
+          <h2>Children’s privacy</h2>
+          <p>
+            This website is not directed at children under 13, and we do not knowingly collect personal
+            information from children under 13. If you believe a child has provided us information, contact
+            us and we will take appropriate steps to delete it.
+          </p>
+
+          <h2>International visitors</h2>
+          <p>
+            If you access this site from outside India, your information may be processed in India or other
+            countries where our service providers operate. Those locations may have different data-protection
+            rules than your home country.
+          </p>
+
+          <h2>Your choices</h2>
+          <p>
+            You can request access to, correction of, or deletion of personal information you have provided
+            through the contact form by emailing us. You can also opt out of personalized ads using the
+            links in the Advertising section above, and manage cookies in your browser.
+          </p>
+
+          <h2>Changes to this policy</h2>
+          <p>
+            We may update this Privacy Policy from time to time. The “Last updated” date at the top will
+            change when we do. Continued use of the site after an update means you accept the revised policy.
+          </p>
+
+          <h2>Contact</h2>
+          <p>
+            Infincy<br />
+            Email:{' '}
+            <a href="mailto:himanshunagapure.official@gmail.com">himanshunagapure.official@gmail.com</a>
+          </p>
         </div>
       </section>
     </>
@@ -488,6 +628,7 @@ function Router() {
           <Route path="/services" component={Services} />
           <Route path="/work" component={Work} />
           <Route path="/contact" component={Contact} />
+          <Route path="/privacy" component={Privacy} />
           <Route component={NotFound} />
         </Switch>
       </Shell>
